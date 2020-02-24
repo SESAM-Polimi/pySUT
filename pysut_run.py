@@ -7,8 +7,6 @@ Authors: L.Rinaldi, G.Guidicini, N.Golinucci, M.A.Tahavori, M.V.Rocco
 
 """
 
-#PROVA CIAO LORE
-
 database = 'Eurostat'                   
 country = 'Italy'
 year = 2014
