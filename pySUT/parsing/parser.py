@@ -79,11 +79,17 @@ def sut_aggregation(nL, indices, multi_indices, ML_sut, agg_level):
                 }
 
     indInd_agg  = list(set(indices['ind'][agg_level]))
+    indInd_agg.sort()
     prodInd_agg = list(set(indices['prod'][agg_level]))
-    vaddInd_agg = list(set(indices['vadd'][agg_level])) 
+    prodInd_agg.sort()
+    vaddInd_agg = list(set(indices['vadd'][agg_level]))
+    vaddInd_agg.sort()    
     impInd_agg  = list(set(indices['imp'][agg_level]))
+    impInd_agg.sort()    
     fdInd_agg   = list(set(indices['fd'][agg_level]))
+    fdInd_agg.sort()    
     exogInd_agg = list(set(indices['exog'][agg_level]))
+    exogInd_agg.sort()   
     
     indices_agg = {
                'prod'    : prodInd_agg,
