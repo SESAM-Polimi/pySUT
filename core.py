@@ -7,11 +7,10 @@ Authors: L.Rinaldi, G.Guidicini, N.Golinucci, M.A.Tahavori, M.V.Rocco
 """
 
 
-def analysis_application(nL, analysis, ML_iot_coeff_0, indices_agg, multi_indices):
+def analysis_application(analysis, ML_iot_coeff_0, indices_agg, multi_indices):
     """
     This function represents the actual core of the model, performing the desired type of analysis.
     Inputs:
-        nL             - Number of layers (economic + physical layers)
         analysis       - Desired type of analysis
         ML_iot_coeff_0 - Dictionary containing technical coefficients for the IOT-like tables
         indices_agg    - Dictionary containing aggregated indices
@@ -36,7 +35,7 @@ def analysis_application(nL, analysis, ML_iot_coeff_0, indices_agg, multi_indice
         from pySUT.applications.shock_analysis.leontief_models import calc_L_1, calc_Y_tot_1, calc_x_1, calc_R_1, calc_E_1
         from pySUT.applications.tables_recalc import calc_Z_1, calc_W_1, calc_M_1, ML_iot_1
         
-        ML_delta_coeff = SA_delta_dict(nL, indices_agg)
+        ML_delta_coeff = SA_delta_dict(indices_agg)
         
         A_0 = ML_iot_coeff_0['A']                # Extracting initial endogenous coefficients matrices
         w_0 = ML_iot_coeff_0['w']                # Extracting initial value added coefficients matrices
