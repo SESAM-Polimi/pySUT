@@ -6,6 +6,7 @@ Authors: L.Rinaldi, G.Guidicini, N.Golinucci, M.A.Tahavori, M.V.Rocco
          Department of Energy - Politecnico di Milano
 
 """
+# CIAO A TUTTI
 
 database = 'Eurostat'                   
 country = 'Italy'
