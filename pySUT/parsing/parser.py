@@ -37,12 +37,9 @@ def sut_aggregation(indices, multi_indices, ML_sut, agg_level):
                 # 'Ri'  : Ri_0,
                 }
 
-    indInd_agg  = list(set(indices['ind'][agg_level]))
-    indInd_agg.sort()
-    prodInd_agg = list(set(indices['prod'][agg_level]))
-    prodInd_agg.sort()
-    fdInd_agg   = list(set(indices['fd'][agg_level]))
-    fdInd_agg.sort()    
+    indInd_agg  = V_0.index
+    prodInd_agg = U_0.index
+    fdInd_agg   = Yp_0.index
     # exogInd_agg = list(set(indices['exog'][agg_level]))
     # exogInd_agg.sort()   
     

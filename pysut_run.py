@@ -11,10 +11,10 @@ Authors: L.Rinaldi, G.Guidicini, N.Golinucci, M.A.Tahavori, M.V.Rocco
 
 
 # analysis = 'SA'            # Options: No - No analysis will be performed
-                           #          SA - Shock analysis
+                             #          SA - Shock analysis
 
-agg_level = 0              # Starts from 0. This parameter indicates the aggregation level according to which the aggregation process shall be performed. 
-                           # Levels of aggregation are to be intended as the columns of the 'headers' sheet in 'tables/database/country/year/indices.xlsx' file.
+agg_level = [2,11]         # Levels of aggregation are to be intended as the columns of the 'headers' sheet in 'tables/database/country/year/indices.xlsx' file.     
+                           
 
 
 # from downloader import*   COMING SOON (HOPEFULLY)

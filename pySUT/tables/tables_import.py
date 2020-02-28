@@ -14,30 +14,36 @@ def indicesImport():
         multi_indices - Dictionary containing multi-indices for the selected database
     """
     
-    headers = pd.read_excel('pySUT/tables/indices.xlsx',"headers", header=None, index_col=None).values.tolist()     # Importing headers for each indices column
+    dataFileName = 'pySUT/tables/indices.xlsx'
 
-    indProd = pd.read_excel('pySUT/tables/indices.xlsx',"prod", header=None, index_col=None).values.T.tolist()      # Products indices
-    indInd  = pd.read_excel('pySUT/tables/indices.xlsx',"ind", header=None, index_col=None).values.T.tolist()       # Industries indices
-    indFd   = pd.read_excel('pySUT/tables/indices.xlsx',"fd", header=None, index_col=None).values.T.tolist()        # Final demand indices
+    headers    = pd.read_excel(dataFileName,"headers", header=None, index_col=None).values.tolist()
+    headers_ex = pd.read_excel(dataFileName,"headers_ex", header=None, index_col=None).values.tolist()
+    indProd    = pd.read_excel(dataFileName,"productIndex", header=None, index_col=None, skiprows=1).values.T.tolist() 
+    indInd     = pd.read_excel(dataFileName,"sectorIndex", header=None, index_col=None, skiprows=1).values.T.tolist()
+    indFd      = pd.read_excel(dataFileName,"finalDemandIndex", header=None, index_col=None, skiprows=1).values.T.tolist()
+    indEx      = pd.read_excel(dataFileName,"exTransIndex", header=None, index_col=None, skiprows=1).values.T.tolist()
 
     indices = {
-               'prod'    : indProd,
-               'ind'     : indInd,
-               'fd'      : indFd,
-               'headers' : headers
-               }
+                'prod'    : indProd,
+                'ind'     : indInd,
+                'fd'      : indFd,
+                'exog'    : indEx,
+                'headers' : headers
+                }
 
     # Multi-indices generation
     mindProd = pd.MultiIndex.from_arrays(indProd, names=headers[0])   # Products multi-index
     mindInd  = pd.MultiIndex.from_arrays(indInd, names=headers[0])    # Industries multi-index
     mindFd   = pd.MultiIndex.from_arrays(indFd, names=headers[0])     # Final demand multi-index
-
+    mindEx   = pd.MultiIndex.from_arrays(indEx, names=headers_ex[0])     # Exogenous resources multi-index
+    
     multi_indices = {
-               'prod'    : mindProd,
-               'ind'     : mindInd,
-               'fd'      : mindFd,
-               'headers' : headers
-               }
+                'prod'    : mindProd,
+                'ind'     : mindInd,
+                'fd'      : mindFd,
+                'exog'    : mindEx,
+                'headers' : headers
+                }
     
         
     return(indices, multi_indices)
