@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import os
 import zipfile
 
 #%% Tables import
@@ -16,8 +14,8 @@ def indicesImport():
     
     dataFileName = 'pySUT/tables/indices.xlsx'
 
-    headers    = pd.read_excel(dataFileName,"headers", header=None, index_col=None).values.tolist()
-    headers_ex = pd.read_excel(dataFileName,"headers_ex", header=None, index_col=None).values.tolist()
+    headers    = pd.read_excel(dataFileName,"headers", header=None, index_col=None,skiprows=1).values.tolist()
+    headers_ex = pd.read_excel(dataFileName,"headers_ex", header=None, index_col=None,skiprows=1).values.tolist()
     indProd    = pd.read_excel(dataFileName,"productIndex", header=None, index_col=None, skiprows=1).values.T.tolist() 
     indInd     = pd.read_excel(dataFileName,"sectorIndex", header=None, index_col=None, skiprows=1).values.T.tolist()
     indFd      = pd.read_excel(dataFileName,"finalDemandIndex", header=None, index_col=None, skiprows=1).values.T.tolist()
