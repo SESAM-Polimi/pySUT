@@ -15,15 +15,15 @@ def indicesImport(database,  year, country):
         indices       - Dictionary containing indices for the selected database
         multi_indices - Dictionary containing multi-indices for the selected database
     """
-            
-    headers = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"headers", header=None, index_col=None).values.tolist()     # Importing headers for each indices column
+        
+    headers = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"headers", header=None, index_col=None).values.tolist()     # Importing headers for each indices column
 
-    indProd = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"prod", header=None, index_col=None).values.T.tolist()      # Products indices
-    indInd  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"ind", header=None, index_col=None).values.T.tolist()       # Industries indices
-    indVadd = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"vadd", header=None, index_col=None).values.T.tolist()      # Value added indices
-    indImp  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"imp", header=None, index_col=None).values.T.tolist()       # Imports indices
-    indFd   = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"fd", header=None, index_col=None).values.T.tolist()        # Final demand indices
-    indExog = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/indices.xlsx',"exog", header=None, index_col=None).values.T.tolist()      # Exogenous resources indices                 
+    indProd = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"prod", header=0, index_col=None).values.T.tolist()      # Products indices
+    indInd  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"ind", header=0, index_col=None).values.T.tolist()       # Industries indices
+    indVadd = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"vadd", header=0, index_col=None).values.T.tolist()      # Value added indices
+    indImp  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"imp", header=0, index_col=None).values.T.tolist()       # Imports indices
+    indFd   = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"fd", header=0, index_col=None).values.T.tolist()        # Final demand indices
+    indExog = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/indices.xlsx',"exog", header=0, index_col=None).values.T.tolist()      # Exogenous resources indices                 
 
     indices = {
                'prod'    : indProd,
@@ -90,26 +90,26 @@ def sutImport(nL, database, year, country, indices):
           
     for l in range(nL):    
         if l==0:   # Layer 0 == economic layer            
-            U_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/use.xlsx',header=None,index_col=None)                # Economic use matrix import 
-            TRC_0[l] = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/trc.xlsx',header=None,index_col=None)                # Economic transaction margins matrix import
-            V_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/supply.xlsx',header=None,index_col=None)             # Economic supply matrix import
-            Wi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/va_ind.xlsx',header=None,index_col=None)             # Economic value added by industries matrix import
-            Wp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/va_prod.xlsx',header=None,index_col=None)            # Economic value added by products matrix import
-            Mi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/imp_ind.xlsx',header=None,index_col=None)            # Economic import by industries matrix import
-            Mp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/imp_prod.xlsx',header=None,index_col=None)           # Economic import by products matrix import
-            Yp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Economic_layer/fd.xlsx',header=None,index_col=None)                 # Economic final demand matrix import           
+            U_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','use',header=None,index_col=None)                # Economic use matrix import 
+            TRC_0[l] = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','trc',header=None,index_col=None)                # Economic transaction margins matrix import
+            V_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','supply',header=None,index_col=None)             # Economic supply matrix import
+            Wi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','va_ind',header=None,index_col=None)             # Economic value added by industries matrix import
+            Wp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','va_prod',header=None,index_col=None)            # Economic value added by products matrix import
+            Mi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','imp_ind',header=None,index_col=None)            # Economic import by industries matrix import
+            Mp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','imp_prod',header=None,index_col=None)           # Economic import by products matrix import
+            Yp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/economic_layer.xlsx','fd',header=None,index_col=None)                 # Economic final demand matrix import           
         else:            
-            U_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/use.xlsx',header=None,index_col=None)                # Physical use matrices import 
-            TRC_0[l] = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/trc.xlsx',header=None,index_col=None)                # Physical transaction margins matrices import
-            V_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/supply.xlsx',header=None,index_col=None)             # Physical supply matrices import
-            Wi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/va_ind.xlsx',header=None,index_col=None)             # Physical value added by industries matrices import
-            Wp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/va_prod.xlsx',header=None,index_col=None)            # Physical value added by products matrices import
-            Mi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/imp_ind.xlsx',header=None,index_col=None)            # Physical import by industries matrices import
-            Mp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/imp_prod.xlsx',header=None,index_col=None)           # Physical import by products matrices import
-            Yp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/Physical_layer_'+str(l)+'/fd.xlsx',header=None,index_col=None)                 # Physical final demand matrices import             
+            U_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','use',header=None,index_col=None)                # Physical use matrices import 
+            TRC_0[l] = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','trc',header=None,index_col=None)                # Physical transaction margins matrices import
+            V_0[l]   = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','supply',header=None,index_col=None)             # Physical supply matrices import
+            Wi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','va_ind',header=None,index_col=None)             # Physical value added by industries matrices import
+            Wp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','va_prod',header=None,index_col=None)            # Physical value added by products matrices import
+            Mi_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','imp_ind',header=None,index_col=None)            # Physical import by industries matrices import
+            Mp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','imp_prod',header=None,index_col=None)           # Physical import by products matrices import
+            Yp_0[l]  = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/layers/physical_layer_'+str(l)+'.xlsx','fd',header=None,index_col=None)                 # Physical final demand matrices import             
 
-    Rp_0 = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/satellite_accounts.xlsx','exog_prod',header=None,index_col=None)     # Exogenous transactions by products matrix import
-    Ri_0 = pd.read_excel('pySUT/tables/'+str(database)+'/'+str(country)+'/'+str(year)+'/satellite_accounts.xlsx','exog_ind',header=None,index_col=None)      # Exogenous transactions by industries matrix import
+    Rp_0 = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/satellite_accounts.xlsx','exog_prod',header=None,index_col=None)     # Exogenous transactions by products matrix import
+    Ri_0 = pd.read_excel('pySUT/tables/'+str(database)+'_'+str(country)+'_'+str(year)+'/satellite_accounts.xlsx','exog_ind',header=None,index_col=None)      # Exogenous transactions by industries matrix import
     
     ML_sut = {
                'U'   : U_0,

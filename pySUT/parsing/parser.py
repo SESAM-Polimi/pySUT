@@ -50,7 +50,7 @@ def sut_aggregation(nL, indices, multi_indices, ML_sut, agg_level,rect_level):
         Wi  = pd.DataFrame(ML_sut['Wi'][l,:,:], index=vaddInd, columns=indInd).groupby(level=[agg_level,rect_level],axis=0).sum().groupby(level=agg_level,axis=1).sum()
         Mp  = pd.DataFrame(ML_sut['Mp'][l,:,:], index=impInd, columns=prodInd).groupby(level=[agg_level,rect_level],axis=0).sum().groupby(level=agg_level,axis=1).sum()
         Mi  = pd.DataFrame(ML_sut['Mi'][l,:,:], index=impInd, columns=indInd).groupby(level=[agg_level,rect_level],axis=0).sum().groupby(level=agg_level,axis=1).sum()
-        Yp  = pd.DataFrame(ML_sut['Yp'][l,:,:], index=prodInd, columns=fdInd).groupby(level=[agg_level,rect_level],axis=0).sum().groupby(level=agg_level,axis=1).sum()
+        Yp  = pd.DataFrame(ML_sut['Yp'][l,:,:], index=prodInd, columns=fdInd).groupby(level=[agg_level,rect_level],axis=0).sum().groupby(level=[agg_level,rect_level],axis=1).sum()
         
         V_0[l]   = V.values
         U_0[l]   = U.values
@@ -84,7 +84,7 @@ def sut_aggregation(nL, indices, multi_indices, ML_sut, agg_level,rect_level):
     fdInd_agg   = Yp.columns
     exogInd_agg = Rp_0.index
     
-    indices_agg = {
+    multi_indices_agg = {
                'prod'    : prodInd_agg,
                'ind'     : indInd_agg,
                'vadd'    : vaddInd_agg,
@@ -94,7 +94,7 @@ def sut_aggregation(nL, indices, multi_indices, ML_sut, agg_level,rect_level):
                'headers' : indices['headers']
                }
         
-    return(ML_sut_agg, indices_agg)
+    return(ML_sut_agg, multi_indices_agg)
 
 
 
